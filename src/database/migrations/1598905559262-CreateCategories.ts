@@ -3,6 +3,7 @@ import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 export default class CreateCategories1598905559262
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
+    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
     await queryRunner.createTable(
       new Table({
         name: 'categories',
@@ -35,5 +36,6 @@ export default class CreateCategories1598905559262
 
   public async down(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.dropTable('categories');
+    await queryRunner.query('DROP EXTENSION IF EXISTS "uuid-ossp"');
   }
 }
