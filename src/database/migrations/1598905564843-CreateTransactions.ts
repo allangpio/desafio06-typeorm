@@ -28,6 +28,10 @@ export class CreateTransactions1598905564843 implements MigrationInterface {
             type: 'int',
           },
           {
+            name: 'type',
+            type: 'varchar',
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
